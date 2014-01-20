@@ -1,0 +1,71 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	font-family: 'helvetica neue',helvetica,arial,'lucida grande',sans-serif;
+	color: #333;
+	background: #e9eaed;
+}
+
+.navbar-facebook {
+	background: #4c66a4 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAABUCAMAAACfvxb8AAAAeFBMVEVOaaJMZ6FIZJ89W5lBXps8WplDYJxNaKFKZqBGYp5HY54/XJpCX5xFYZ07WZg+XJpLZqBAXZtJZZ9EYZ1NaKI8Wpg9WplMaKFNaaJJZJ9LZ6FEYJ1FYp1DX5xAXptJZaBAXZo+W5k+W5pKZaBGY55LZ6A8WZg/XZpJqQD4AAAAVklEQVR4Xk3CBQoDABADwU3d3d37/x8WAqEHI/jboZV1Y2sqDuiNZtaLJ7qihe1RoxjEC/XjhMaxtCPqxBmNolVc0Nxu6IuGMbUHuqNmsbF2rO2DJhg/RwEE6AR0V3kAAAAASUVORK5CYII=);
+	text-shadow: 0 -1px #283a6d;
+	font-weight: bold;
+}
+
+.navbar-facebook .navbar-brand span {
+	padding-left: 35px;
+	background: url( /img/f.png ) 1px center no-repeat;
+	background-size: 20px 20px;
+}
+
+.navbar-facebook .dropdown-menu {
+	text-shadow: none;
+}
+
+.navbar-facebook .navbar-brand,
+.navbar-facebook .navbar-nav > li > a {
+	color: #ffffff;
+}
+
+.navbar-facebook .active {
+	background: #364c7c;
+}
+
+.navbar-facebook .caret,
+.navbar-facebook a:hover .caret,
+.navbar-facebook .open > a .caret,
+.navbar-facebook .open > a:hover .caret,
+.navbar-facebook .open > a:focus .caret {
+	border-bottom-color: #999;
+	border-top-color: #ddd;
+}
+
+.navbar-facebook .open > a, 
+.navbar-facebook .open > a:hover, 
+.navbar-facebook .open > a:focus {
+	background: none;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+	background: none;
+}
+
+.panel-facebook { 
+	border-color: #d6d7da #d5d8dd #c7c8ca;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+.panel-facebook > .panel-heading {
+	color: #4e5665;
+	background: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#f7f7f7));
+	border-color: #e5e5e5;
+}
+
+#file {
+    display:none;
+}
+
+#app_menu {
+	width: 380px;
+}

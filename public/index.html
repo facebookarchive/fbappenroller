@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Facebook App Enroller</title>
+
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+
+  <style>
+  #content {
+    margin-top: 70px;
+    margin-bottom:30px;
+  }
+
+  .input-group {
+    margin-bottom:10px;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-facebook navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span>Facebook App Enroller</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="content">
+
+    <div id="alert_placeholder"></div>
+
+    <div class="panel panel-facebook" id="panel_login">
+      <h3>Facebook Login</h3>
+      <p>Get started by logging into Facebook</p>
+      <button type="button" class="btn btn-primary " id="fblogin"> Login with Facebook</button>
+    </div> <!-- panel -->
+
+    <div id="logged_in_view">
+
+      <div class="panel panel-facebook">
+        <h3>Manage apps</h3>
+        <p>Select an app from the drop-down list to manage. You must be an administrator of the app for it to be listed. Then enter the app's App Secret and click Populate</p>
+
+        <div class="input-group">
+        <div class="btn-group">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span> Select an App <span class="caret"></span></button>
+          <ul class="dropdown-menu" id="app_menu">
+          </ul>
+        </div>
+      </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span> App Secret</span>
+          <input id="app_secret" type="text" class="form-control" placeholder="...paste your app secret in here.">
+          <span class="input-group-btn"><button type="button" class="btn btn-primary" id="app_find_secret"><span class="glyphicon glyphicon glyphicon-search"></span> Find</button></span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon glyphicon-cog"></span> User Access Token</span>
+          <input id="app_user_access_token" type="text" class="form-control" placeholder="...paste your user access token in here.">
+          <span class="input-group-btn"><button type="button" class="btn btn-primary" id="app_find_user_access_token"><span class="glyphicon glyphicon glyphicon-search"></span> Find</button></span>
+        </div>
+
+        <div class="input-group">
+        <button type="button" class="btn btn-primary" id="app_populate_roles"><span class="glyphicon glyphicon-cloud-download"></span> Populate</button>
+      </div>
+      </div>
+
+
+      <div class="panel panel-facebook">
+        <h3>Administrators <small>Complete administrative access, including payment details and the ability to delete the app.</small></h3>
+        <div id="roles_administrators">
+          <table id="roletable_administrators" class="table table-hover table-striped table-bordered">
+            <th style="width: 70px">Picture</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th style="width: 120px">Tasks</th>
+          </table>
+        </div>
+          <form id="bulk_administrators" action="" method="">
+            <div class="form-group">
+              <label for="bulk_administrators_text">Batch alter role. <small>Provide one Facebook user id per line, or as a comma seperated list.</small></label>
+              <textarea id="bulk_administrators_text" class="form-control" rows="5"></textarea>
+            </div>
+            <button type="button" data-loading-text="Adding..." data-success-text="Added users successfully" data-error-text="Failed! :/" class="btn btn-success" id="bulk_administrators_add_go"><span class="glyphicon glyphicon glyphicon-plus-sign"</span> Add</button>
+            <button type="button" data-loading-text="Removing..." data-success-text="Removed!" data-error-text="Failed! :/" class="btn btn-danger" id="bulk_administrators_remove_go"><span class="glyphicon glyphicon glyphicon-remove-sign"</span> Remove</button>
+          </form>
+      </div>  <!-- panel -->
+
+      <div class="panel panel-facebook">
+        <h3>Developers <small>Access to app settings needed to run, edit and test.</small></h3>
+        <div id="roles_developers">
+          <table id="roletable_developers" class="table table-hover table-striped table-bordered">
+            <th style="width: 70px">Picture</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th style="width: 120px">Tasks</th>
+          </table>
+        </div>
+        <form id="bulk_developers" action="" method="">
+          <div class="form-group">
+            <label for="bulk_developers_text">Batch alter role. <small>Provide one Facebook user id per line, or as a comma seperated list.</small></label>
+            <textarea id="bulk_developers_text" class="form-control" rows="5"></textarea>
+          </div>
+          <button type="button" data-loading-text="Adding..." data-success-text="Added users successfully" data-error-text="Failed! :/" class="btn btn-success" id="bulk_developers_add_go"><span class="glyphicon glyphicon glyphicon-plus-sign"</span> Add</button>
+          <button type="button" data-loading-text="Removing..." data-success-text="Removed!" data-error-text="Failed! :/" class="btn btn-danger" id="bulk_developers_remove_go"><span class="glyphicon glyphicon glyphicon-remove-sign"</span> Remove</button>
+        </form>
+      </div>  <!-- panel -->
+
+      <div class="panel panel-facebook">
+        <h3>Testers <small>Access to test the app in sandbox mode.</small></h3>
+        <div id="roles_testers">
+          <table id="roletable_testers" class="table table-hover table-striped table-bordered">
+            <th style="width: 70px">Picture</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th style="width: 120px">Tasks</th>
+          </table>
+        </div>
+        <form id="bulk_testers" action="" method="">
+          <div class="form-group">
+            <label for="bulk_testers_text">Batch alter role. <small>Provide one Facebook user id per line, or as a comma seperated list.</small></label>
+            <textarea id="bulk_testers_text" class="form-control" rows="5"></textarea>
+          </div>
+          <button type="button" data-loading-text="Adding..." data-success-text="Added users successfully" data-error-text="Failed! :/" class="btn btn-success" id="bulk_testers_add_go"><span class="glyphicon glyphicon glyphicon-plus-sign"</span> Add</button>
+          <button type="button" data-loading-text="Removing..." data-success-text="Removed!" data-error-text="Failed! :/" class="btn btn-danger" id="bulk_testers_remove_go"><span class="glyphicon glyphicon glyphicon-remove-sign"</span> Remove</button>
+        </form>
+      </div> <!-- panel -->
+
+      <div class="panel panel-facebook">
+        <h3>Insights Users <small>Access to App Insights</small></h3>
+        <div id="roles_insights">
+          <table id="roletable_insights" class="table table-hover table-striped table-bordered">
+            <th style="width: 70px">Picture</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th style="width: 120px">Tasks</th>
+          </table>
+        </div>
+        <form id="bulk_insights" action="" method="">
+          <div class="form-group">
+            <label for="bulk_insights_text">Batch alter role. <small>Provide one Facebook user id per line, or as a comma seperated list.</small></label>
+            <textarea id="bulk_insights_text" class="form-control" rows="5"></textarea>
+          </div>
+          <button type="button" data-loading-text="Adding..." data-success-text="Added users successfully" data-error-text="Failed! :/" class="btn btn-success" id="bulk_insights_add_go"><span class="glyphicon glyphicon glyphicon-plus-sign"</span> Add</button>
+          <button type="button" data-loading-text="Removing..." data-success-text="Removed!" data-error-text="Failed! :/" class="btn btn-danger" id="bulk_insights_remove_go"><span class="glyphicon glyphicon glyphicon-remove-sign"</span> Remove</button>
+        </form>
+      </div> <!-- panel -->
+
+    </div> <!-- logged_in_view -->
+
+    
+
+  </div> <!-- container -->
+
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="//connect.facebook.net/en_US/all.js"></script>
+  <script src="/js/enroll.js"></script>
+
+
+
+</body>
+</html>
